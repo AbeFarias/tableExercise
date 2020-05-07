@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+
+<button onclick="(buildTable(header, myNames, document.getElementById('a')))">Try it</button>
+
+<p>Click the button to create a TABLE, a TR and a TD element.</p>
+
+<div id="a"><p></p></div>
+
+
+<script>
+    let header = ["Name", "Location", "Height"];
+    let myNames = [{"name":"Bro Mountain", "location":"With the bois", "height":"very big"}];
+  function buildTable(labels, objects, container) {
+  var table = document.createElement('table');
+  var thead = document.createElement('thead');
+  var tbody = document.createElement('tbody');
+
+  var theadTr = document.createElement('tr');
+  for (var i = 0; i < labels.length; i++) {
+    var theadTh = document.createElement('th');
+    theadTh.innerHTML = labels[i];
+    theadTr.appendChild(theadTh);
+  }
+  thead.appendChild(theadTr);
+  table.appendChild(thead);
+
+  for (j = 0; j < objects.length; j++) {
+    var tbodyTr = document.createElement('tr');
+    for (k = 0; k < labels.length; k++) {
+      var tbodyTd = document.createElement('td');
+      tbodyTd.innerHTML = objects[j][labels[k].toLowerCase()];
+      tbodyTr.appendChild(tbodyTd);
+    }
+    tbody.appendChild(tbodyTr);
+  }
+  table.appendChild(tbody);
+
+  container.appendChild(table);
+}
+</script>
+
+</body>
+</html>
